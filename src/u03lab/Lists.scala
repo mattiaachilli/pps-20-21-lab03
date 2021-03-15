@@ -41,7 +41,7 @@ object Lists {
     })
 
     def foldLeft[A, B](l: List[A])(accumulator: B)(f: (B, A) => B): B = l match {
-      case Cons(head, tail) => f(foldLeft(tail)(accumulator)(f), head)
+      case Cons(head, tail) => foldLeft(tail)(f(accumulator, head))(f)
       case _ => accumulator
     }
 

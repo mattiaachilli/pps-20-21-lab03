@@ -50,7 +50,7 @@ class ListsTest {
   @Test def testFold(): Unit = {
     val lst = Cons(3, Cons(7, Cons(1, Cons(5, Nil ()))))
     assertEquals(-16, foldLeft(lst)(0)(_-_)) // (((0 - 3) - 7) - 1) - 5 = -16
-    assertEquals(16, foldLeft(lst)(0)(_+_)) // (((0 + 3) - 7) - 1) - 5 = 16
+    assertEquals(16, foldLeft(lst)(0)(_+_)) // (((0 + 3) + 7) + 1) + 5 = 16
     assertEquals(16, foldRight(lst)(0)(_+_)) // 3 + (7 + (1 + (5 + 0))) = 16
     assertEquals(-8, foldRight(lst)(0)(_-_)) // 3 - (7 - (1 - (5 - 0))) = -8
   }
