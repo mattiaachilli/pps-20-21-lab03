@@ -7,8 +7,8 @@ object Streams {
   sealed trait Stream[A]
 
   object Stream {
-    private case class Empty[A]() extends Stream[A]
-    private case class Cons[A](head: () => A, tail: () => Stream[A]) extends Stream[A]
+    case class Empty[A]() extends Stream[A]
+    case class Cons[A](head: () => A, tail: () => Stream[A]) extends Stream[A]
 
     def empty[A](): Stream[A] = Empty()
 
@@ -29,7 +29,7 @@ object Streams {
     }
 
     def filter[A](stream: Stream[A])(pred: A => Boolean): Stream[A] = stream match {
-      case Cons(head, tail) if (pred(head())) => cons(head(), filter(tail())(pred))
+      case Cons(head, tail) if pred(head()) => cons(head(), filter(tail())(pred))
       case Cons(head, tail) => filter(tail())(pred)
       case _ => Empty()
     }
