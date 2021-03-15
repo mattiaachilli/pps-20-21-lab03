@@ -27,4 +27,9 @@ class ListsTest {
     val excepted1 = Cons(11, Cons(21, Cons(31, Nil())))
     assertEquals(excepted1, map(l)(v => v + 1))
   }
+
+  @Test def testFilter(){
+    val excepted1 = Cons(20, Cons(30, Nil()))
+    assertEquals(excepted1, filter(l)(_ >= 20))
+  }
 }

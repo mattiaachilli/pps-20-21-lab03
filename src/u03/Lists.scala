@@ -1,5 +1,7 @@
 package u03
 
+import u03lab.Lists.List.filter
+
 object Lists {
 
   // A generic linkedlist
@@ -18,12 +20,6 @@ object Lists {
     def append[A](l1: List[A], l2: List[A]): List[A] = (l1, l2) match {
       case (Cons(h, t), l2) => Cons(h, append(t, l2))
       case _ => l2
-    }
-
-    def filter[A](l1: List[A])(pred: A=>Boolean): List[A] = l1 match {
-      case Cons(h,t) if (pred(h)) => Cons(h, filter(t)(pred))
-      case Cons(_,t) => filter(t)(pred)
-      case Nil() => Nil()
     }
   }
 }
