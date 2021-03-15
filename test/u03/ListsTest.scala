@@ -1,0 +1,18 @@
+package u03
+
+import org.junit.jupiter.api.Assertions._
+import org.junit.jupiter.api.Test
+import u03lab.Lists.List._
+import u03.Lists.List._
+
+class ListsTest {
+
+  val l: Cons[Int] = Cons(10, Cons(20, Cons(30, Nil())))
+
+  @Test def testDrop(){
+    assertEquals(Cons(20, Cons(30, Nil())), drop(l, 1))
+    assertEquals(Cons(30, Nil()), drop(l, 2))
+    assertEquals(Nil(), drop(l, 3))
+    assertEquals(Nil(), drop(Nil(), 1))
+  }
+}
