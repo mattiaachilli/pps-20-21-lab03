@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions._
 import org.junit.jupiter.api.Test
 import u03lab.Lists.List._
 import u03.Lists.List._
+import u02.Optionals.Option.Some
+import u02.Optionals.Option.None
 
 class ListsTest {
 
@@ -24,12 +26,17 @@ class ListsTest {
   }
 
   @Test def testMap(){
-    val excepted1 = Cons(11, Cons(21, Cons(31, Nil())))
-    assertEquals(excepted1, map(l)(v => v + 1))
+    val excepted = Cons(11, Cons(21, Cons(31, Nil())))
+    assertEquals(excepted, map(l)(v => v + 1))
   }
 
   @Test def testFilter(){
-    val excepted1 = Cons(20, Cons(30, Nil()))
-    assertEquals(excepted1, filter(l)(_ >= 20))
+    val excepted = Cons(20, Cons(30, Nil()))
+    assertEquals(excepted, filter(l)(_ >= 20))
+  }
+
+  @Test def testMax(){
+    assertEquals(Some(30), max(l))
+    assertEquals(None(), max(Nil()))
   }
 }
