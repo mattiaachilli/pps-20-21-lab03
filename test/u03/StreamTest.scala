@@ -18,4 +18,10 @@ class StreamTest {
     assertEquals(Nil(), toList(drop(testStream)(6)))
     assertEquals(Nil(), toList(drop(Empty())(2)))
   }
+
+  @Test def testConstant(): Unit = {
+    assertEquals(of("Hello World", "Hello World", "Hello World"), toList(take(constant("Hello World"))(3)))
+    assertEquals(of(true, true, true), toList(take(constant(true))(3)))
+    assertEquals(of(1, 1, 1), toList(take(constant(1))(3)))
+  }
 }
