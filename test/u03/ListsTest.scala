@@ -6,6 +6,7 @@ import u03lab.Lists.List._
 import u03.Lists.List._
 import u02.Optionals.Option.Some
 import u02.Optionals.Option.None
+import u02.SumTypes._
 
 class ListsTest {
 
@@ -38,5 +39,11 @@ class ListsTest {
   @Test def testMax(){
     assertEquals(Some(30), max(l))
     assertEquals(None(), max(Nil()))
+  }
+
+  @Test def testPeopleToCourse(){
+    val people: Cons[Person] = Cons(Student("Student", 1998), Cons(Teacher("Teacher", "Paradigmi"), Nil()))
+    assertEquals(Cons("Paradigmi", Nil()), peopleToCourse(people))
+    assertEquals(Nil(), Nil())
   }
 }
