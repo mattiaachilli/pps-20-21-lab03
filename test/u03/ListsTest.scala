@@ -22,4 +22,9 @@ class ListsTest {
     assertEquals(excepted1, flatMap(l)(v => Cons(v + 1, Nil())))
     assertEquals(excepted2, flatMap(l)(v => Cons(v + 1, Cons(v + 2, Nil()))))
   }
+
+  @Test def testMap(){
+    val excepted1 = Cons(11, Cons(21, Cons(31, Nil())))
+    assertEquals(excepted1, map(l)(v => v + 1))
+  }
 }
