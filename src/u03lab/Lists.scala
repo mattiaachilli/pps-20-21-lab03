@@ -20,19 +20,19 @@ object Lists {
 
     def flatMap[A, B](l: List[A])(mapper: A => List[B]): List[B] = l match {
       case Cons(head, tail) => append(mapper(head), flatMap(tail)(mapper))
-      case Nil() => Nil()
+      case _ => Nil()
     }
 
     def map[A,B](l: List[A])(mapper: A => B): List[B] = flatMap(l)(value => Cons(mapper(value), Nil()))
 
-    def filter[A](l: List[A])(pred: A => Boolean): List[A] = flatMap(l) ({
-      case value if pred(value) => Cons(value, Nil())
+    def filter[A](l: List[A])(mapper: A => Boolean): List[A] = flatMap(l) ({
+      case value if mapper(value) => Cons(value, Nil())
       case _ => Nil()
     })
 
     def max(l: List[Int]): Option[Int] = l match {
       case Cons(head, tail) => Some(Math.max(head, getOrElse(max(tail), Int.MinValue)))
-      case Nil() => None()
+      case _ => None()
     }
 
     def peopleToCourse(l: List[Person]): List[String] = flatMap(l)({
@@ -40,6 +40,7 @@ object Lists {
       case _ => Nil()
     })
 
+    @tailrec
     def foldLeft[A, B](l: List[A])(accumulator: B)(f: (B, A) => B): B = l match {
       case Cons(head, tail) => foldLeft(tail)(f(accumulator, head))(f)
       case _ => accumulator
