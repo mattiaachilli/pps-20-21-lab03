@@ -24,4 +24,10 @@ class StreamTest {
     assertEquals(of(true, true, true), toList(take(constant(true))(3)))
     assertEquals(of(1, 1, 1), toList(take(constant(1))(3)))
   }
+
+  @Test def testFibonacci(): Unit = {
+    val fibs = fib()
+    assertEquals(of(0, 1, 1), toList(take(fibs)(3)))
+    assertEquals(append(of(0, 1, 1), of(2, 3, 5)), toList(take(fibs)(6)))
+  }
 }
